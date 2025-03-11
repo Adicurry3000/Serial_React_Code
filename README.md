@@ -1,26 +1,29 @@
-# Serial Data Graph Visualizer
+# **Serial Data Visualizer with React and Node.js**
 
-This project reads data from a **serial port**, sends it to a **WebSocket server**, and visualizes it in **real-time graphs** using **React** and **Recharts**.
+This project visualizes real-time data from a serial port using a React frontend and a Node.js backend.
 
 ---
 
-## 🚀 Getting Started
+## **Getting Started**
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/Adicurry3000/Serial_React_Code.git
-cd serial-graph
+### **1. Clone the Repository**
+```sh
+git clone <repository-url>
+cd <repository-folder>
 ```
 
-### 2. Install Dependencies
-**Backend Dependencies:**
-```bash
-cd backend
-npm install express ws serialport @serialport/parser-readline
+---
+
+### **2. Install Dependencies**
+
+**For Backend:**
+```sh
+cd Serial_Data_To_React
+npm install express ws serialport cors
 ```
 
-**Frontend Dependencies:**
-```bash
+**For Frontend (React App):**
+```sh
 cd ../serial-graph
 npm install
 npm install recharts
@@ -28,79 +31,48 @@ npm install recharts
 
 ---
 
-## ⚙️ Configuration
+### **3. File Setup**
 
-### 3. Serial Port Setup (Backend)
-1. Open `server.js` in the **backend** folder.
-2. Update the serial port path in this line:
+- **Create a new folder** (e.g., `serial-backend`) and place the provided `server.js` file inside it.
+- In the **React app folder** (`serial-graph`), navigate to `/src` and replace the existing `App.js` with the provided one.
+
+---
+
+### **4. Configure the Serial Port**
+In **`server.js`**, update this line to match your device's port:
 ```javascript
-const serialPort = new SerialPort({ path: "COM3", baudRate: 9600 });
-```
-- On **Windows**, use `COM3`, `COM4`, etc.
-- On **Mac/Linux**, use `/dev/ttyUSB0` or similar.
-
-### 4. Finding Your Serial Port
-Run this command to find your serial port:
-```bash
-npx @serialport/list
+const serialPort = new SerialPort({ path: "COM3", baudRate: 9600 }); 
 ```
 
 ---
 
-## 📡 Running the Application
+### **5. Run the Application**
 
-### 5. Start the Backend Server
-In the **backend** folder:
-```bash
+**Start the Backend:**
+```sh
+cd serial-backend
 node server.js
 ```
-> The server will run on `http://localhost:5000`
 
-### 6. Start the Frontend React App
-In the **serial-graph** folder:
-```bash
+**Start the Frontend:**
+```sh
+cd ../serial-graph
 npm start
 ```
-> The React app will run on `http://localhost:3000`
 
 ---
 
-## 🖥️ How to Use
-1. Connect your device to the correct **serial port**.
-2. Start both **backend** and **frontend** servers.
-3. Open `http://localhost:3000` in your browser.
-4. Watch your serial data visualized in **real-time graphs**.
+### **6. Viewing the Data**
+- Open your browser and go to: **`http://localhost:3000`**  
+- Real-time graphs will display incoming serial data.
 
 ---
 
-## ❗ Common Issues & Solutions
+### **7. Simulate Sample Data Using Arduino**
+If you want to simulate sample data using an Arduino, you can upload the provided code.
 
-**1. Error: `EADDRINUSE: address already in use :5000`**
-- Run this command to kill the process using port 5000:
-```bash
-netstat -ano | findstr :5000
+
+---
+
+If you encounter any issues or have questions, feel free to ask! 🚀
 ```
-Then:
-```bash
-taskkill /PID <PID> /F
-```
-
-**2. Error: `Module not found: Can't resolve 'recharts'`**
-- Run this to install `recharts`:
-```bash
-npm install recharts
-```
-
-**3. Error: `"path" is not defined: undefined`**
-- Ensure you have specified the correct serial port path in `server.js`.
-
----
-
-## 🤝 Contributing
-Feel free to submit issues or pull requests for improvements or new features.
-
----
-
-## 📄 License
-This project is licensed under the **MIT License**.
-
