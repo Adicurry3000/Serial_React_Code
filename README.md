@@ -24,8 +24,8 @@ npm install express ws serialport cors
 
 **For Frontend (React App):**
 ```sh
+npx create-react-app serial-graph
 cd ../serial-graph
-npm install
 npm install recharts
 ```
 
@@ -41,8 +41,9 @@ npm install recharts
 ### **4. Configure the Serial Port**
 In **`server.js`**, update this line to match your device's port:
 ```javascript
-const serialPort = new SerialPort({ path: "COM3", baudRate: 9600 }); 
+const serialPort = new SerialPort({ path: "<Your Com Port>", baudRate: 9600 }); 
 ```
+*Connect your device else it will show an error
 
 ---
 
